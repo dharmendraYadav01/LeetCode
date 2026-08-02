@@ -12,7 +12,7 @@
  */
 class Solution {
 public:
-    int mx_s = 0;
+    int mx_s = INT_MIN;
     int maxSum(TreeNode* root) {
         if (!root)
             return 0;
