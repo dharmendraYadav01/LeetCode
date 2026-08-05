@@ -1,18 +1,11 @@
 class Solution {
 public:
-    void find(int i, vector<int>& visit, vector<vector<int>>& adj) {
-        visit[i] = 0;
-        for (int node : adj[i]) {
-            if (visit[node] == 1) {
-                find(node, visit, adj);
-            }
-        }
-    }
     void dfs(int k, vector<int>& visit, vector<vector<int>>& adj) {
         visit[k] = 1;
         for (int node : adj[k]) {
-            if (!visit[node])
+            if (!visit[node]){
                 dfs(node, visit, adj);
+            }
         }
     }
     vector<int> remainingMethods(int n, int k, vector<vector<int>>& invocations) {
@@ -23,9 +16,14 @@ public:
         vector<int> visit(n, 0);
         vector<int> ans;
         dfs(k, visit, adj);
-        for (int i = 0; i < visit.size(); i++) {
-            if (!visit[i] && i != k) {
-                find(i, visit, adj);
+        for(auto& it:invocations){
+            int u=it[0];
+            int v=it[1];
+            if(!visit[u] && visit[v]){
+                visit[v]=0;
+            }
+            if(visit[u] && !visit[v]){
+                visit[u]=0;
             }
         }
         for (int i = 0; i < visit.size(); i++) {
