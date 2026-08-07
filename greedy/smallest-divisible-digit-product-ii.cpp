@@ -14,7 +14,7 @@ public:
         }
         return t == 1 ? 1 : 0;
     }
-    string func(int num, int t) {
+    string func(ll num, int t) {
         string ans;
         for (int i = 9; i > 1; i--) {
             while ((num % i) == 0) {
