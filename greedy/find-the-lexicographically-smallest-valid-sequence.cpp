@@ -8,15 +8,12 @@ public:
         int j = m - 1;
         int isequal = 0;
         while (i >= 0) {
-            if (word1[i] == word2[j]) {
+            if (j >= 0 && word1[i] == word2[j]) {
                 isequal++;
-                occur[i] = isequal;
-                i--;
                 j--;
-            } else {
-                occur[i] = isequal;
-                i--;
             }
+            occur[i] = isequal;
+            i--;
         }
         i = 0;
         j = 0;
@@ -33,8 +30,6 @@ public:
             }
             i++;
         }
-        if (j >= m)
-            return seq;
-        return {};
+        return j == m ? seq : vector<int>();
     }
 };
