@@ -1,4 +1,4 @@
-class DisjointSet {
+class DisjointSet { // implementation of DSU
     vector<int> parent, rank, size;
 
 public:
