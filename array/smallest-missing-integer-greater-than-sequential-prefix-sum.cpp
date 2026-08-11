@@ -11,7 +11,7 @@ public:
         }
         int sum = accumulate(result.begin(), result.end(), 0);
         while (true) {
-            // if true then--
+            // if true then
             if (find(nums.begin(), nums.end(), sum) == nums.end()) {
                 return sum;
             }
