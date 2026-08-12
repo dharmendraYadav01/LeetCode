@@ -12,9 +12,9 @@ public:
             if (freq[i] <= k || !freq.count(i)) {
                 cnt++;
             } else if (freq[i] > k) {
-                ans = max(ans, cnt);
                 cnt = 0;
             }
+            ans = max(ans, cnt);
         }
         return ans;
     }
