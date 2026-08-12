@@ -6,29 +6,29 @@
  *     TreeNode *right;
  *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
  *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left),
+ * right(right) {}
  * };
  */
 class Solution {
 public:
-    void binary(vector<string>&doing,TreeNode* root,string s){
-        if(!root->left && !root->right){
-            doing.push_back(s);
+    void Paths(TreeNode* root, vector<string>& ans, string s) {
+        if (!root)
+            return;
+        if (!root->left && !root->right) {
+            ans.push_back(s);
             return;
         }
-        if(root->left){
-            binary(doing,root->left,s+"->"+to_string(root->left->val));
+        if (root->left) {
+            Paths(root->left, ans, s + "->" + to_string(root->left->val));
         }
-        if(root->right){
-            binary(doing,root->right,s+"->"+to_string(root->right->val));
+        if (root->right) {
+            Paths(root->right, ans, s + "->" + to_string(root->right->val));
         }
     }
     vector<string> binaryTreePaths(TreeNode* root) {
-        vector<string>doing;
-        if(root==nullptr){
-            return doing;
-        }
-        binary(doing,root,to_string(root->val));
-        return doing;
+        vector<string> ans;
+        Paths(root, ans, to_string(root->val));
+        return ans;
     }
 };
