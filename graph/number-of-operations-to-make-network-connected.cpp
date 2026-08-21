@@ -53,7 +53,7 @@ public:
         int Extra = 0;
         for (auto& i : connections) {
             // if both has same parent then no need to connect those edges
-            if (ds.findUPar(i[0]) == ds.findP(i[1])) {
+            if (ds.findUPar(i[0]) == ds.findUPar(i[1])) {
                 Extra++;
             } else {
                 ds.UnionByRank(i[0], i[1]);
