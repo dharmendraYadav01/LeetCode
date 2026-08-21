@@ -1,6 +1,3 @@
-// #include<bits/stdc++.h>
-// using namespace std;
-
 class DisjointSet {
     vector<int> parent, rank, size;
 
@@ -50,28 +47,6 @@ public:
     }
 };
 
-// int main(){
-//     DisjointSet ds(7);
-//     ds.UnionBySize(1,2);
-//     ds.UnionBySize(2,3);
-//     ds.UnionBySize(4,5);
-//     ds.UnionBySize(6,7);
-//     ds.UnionBySize(5,6);
-//     if(ds.findUPar(3)==ds.findUPar(7)){
-//         cout<<"Same\n";
-//     }
-//     else{
-//         cout<<"Not Same\n";
-//     }
-//     ds.UnionBySize(3,7);
-//     if(ds.findUPar(3)==ds.findUPar(7)){
-//         cout<<"Same\n";
-//     }
-//     else{
-//         cout<<"Not Same\n";
-//     }
-// }
-
 class Solution {
 public:
     int findCircleNum(vector<vector<int>>& isConnected) {
@@ -84,11 +59,15 @@ public:
                 }
             }
         }
-        int cnt = 0;
+
+        int provinces = 0;
         for (int i = 0; i < n; i++) {
             if (ds.findUPar(i) == i)
-                cnt++;
+                provinces++;
         }
-        return cnt;
+        return provinces;
     }
 };
+// 1 1 0
+// 1 1 0
+// 0 0 1
