@@ -50,18 +50,22 @@ class Solution {
 public:
     int makeConnected(int n, vector<vector<int>>& connections) {
         DisjointSet ds(n);
-        int extra = 0;
+        int Extra = 0;
         for (auto& i : connections) {
-            if (ds.findUPar(i[0]) == ds.findUPar(i[1]))
-                extra++;
-            else
-                ds.UnionBySize(i[0], i[1]);
+            // if both has same parent then no need to connect those edges
+            if (ds.findUPar(i[0]) == ds.findP(i[1])) {
+                Extra++;
+            } else {
+                ds.UnionByRank(i[0], i[1]);
+            }
         }
+        // the node having parent of itself
         int cmp = 0;
         for (int i = 0; i < n; i++) {
-            if (ds.findUPar(i) == i)
+            if (ds.findUPar(i) == i) {
                 cmp++;
+            }
         }
-        return extra >= cmp - 1 ? cmp - 1 : -1;
+        return Extra >= cmp - 1 ? cmp - 1 : -1;
     }
 };
