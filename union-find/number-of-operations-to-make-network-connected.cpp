@@ -56,7 +56,7 @@ public:
             if (ds.findUPar(i[0]) == ds.findUPar(i[1])) {
                 Extra++;
             } else {
-                ds.UnionByRank(i[0], i[1]);
+                ds.UnionByRank(i[0], i[1]); // if not same then make same.
             }
         }
         // the node having parent of itself
