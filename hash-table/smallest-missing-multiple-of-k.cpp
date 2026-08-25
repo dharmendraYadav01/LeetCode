@@ -4,7 +4,7 @@ public:
         unordered_set<int> st(nums.begin(), nums.end());
         int i = 1;
         int n = nums.size();
-        while (i <= n * k) {
+        while (true) {
             if (i % k == 0 && !st.count(i)) {
                 return i;
             }
