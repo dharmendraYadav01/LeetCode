@@ -1,7 +1,6 @@
 class Solution {
 public:
     string shortestBeautifulSubstring(string s, int k) {
-        int ans = INT_MAX;
         string res = "";
         for (int i = 0; i < s.length(); i++) {
             int cnt = 0;
@@ -15,8 +14,9 @@ public:
                     break;
             }
             if (cnt == k) {
-                res = temp;
-                ans = cnt;
+                if (res == "" || temp.length() < res.length() && (temp.length() < res.length() || temp < res)) {
+                    res = temp;
+                }
             }
         }
         return res;
