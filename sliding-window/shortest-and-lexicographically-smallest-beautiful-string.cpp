@@ -14,7 +14,7 @@ public:
                     break;
             }
             if (cnt == k) {
-                if (res == "" || temp.length() < res.length() && (temp.length() < res.length() || temp < res)) {
+                if (res == "" || temp.length() < res.length() || (temp.length() == res.length() && temp < res)) {
                     res = temp;
                 }
             }
