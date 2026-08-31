@@ -26,11 +26,17 @@ public:
                 res.push_back(i + 1);
             }
         }
-        vector<int> ans(2, -1);
-        if (res.size() > 1) {
-            ans[0] = res[res.size() - 1] - res[res.size() - 2];
-            ans[1] = res[res.size() - 1] - res[0];
+        int mini = INT_MAX;
+        int maxi = -1;
+        for (int i = 1; i < res.size(); i++) {
+            mini = min(mini, res[i] - res[i - 1]);
         }
-        return ans;
+        if (res.size() > 1) {
+            maxi = res[res.size() - 1] - res[0];
+        }
+        if (maxi == -1 || mini == INT_MAX) {
+            return {-1, -1};
+        }
+        return {mini, maxi};
     }
 };
