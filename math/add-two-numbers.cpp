@@ -11,8 +11,8 @@
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        ListNode* dummy=new struct ListNode(0);
-        ListNode* pre=dummy;
+        ListNode* New_node=new struct ListNode(0);
+        ListNode* curr=New_node;
         ListNode* ptr1=l1;
         ListNode* ptr2=l2;
         int carry=0;
@@ -26,11 +26,11 @@ public:
                 sum+=ptr2->val;
                 ptr2=ptr2->next;
             }
-            // if sum is in two digit then 1st is carry and 2nd is value
             carry=sum/10;
-            pre->next=new struct ListNode(sum%10);
-            pre=pre->next;
+            curr->next=new struct ListNode(sum%10);
+            curr=curr->next;
         }
-        return dummy->next;
+        return New_node->next;
+
     }
 };
