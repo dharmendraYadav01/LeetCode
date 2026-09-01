@@ -19,6 +19,7 @@ public:
 class Solution {
 public:
     Node* connect(Node* root) {
+        // using queue
         queue<Node*> q;
         if (root == nullptr) {
             return root;
