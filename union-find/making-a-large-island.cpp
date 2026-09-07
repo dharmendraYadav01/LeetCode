@@ -63,7 +63,7 @@ public:
                     continue;
                 for (int i = 0; i < 4; i++) {
                     int adjr = row + dir_r[i];
-                    int adjc = row + dir_c[i];
+                    int adjc = col + dir_c[i];
                     if (isValid(adjr, adjc, n) && grid[adjr][adjc] == 1) {
                         int currNode_no = row * n + col;
                         int adjNode_no = adjr * n + adjc;
@@ -80,7 +80,7 @@ public:
             for (int col = 0; col < n; col++) {
                 if (grid[row][col] == 1)
                     continue;
-                grid[row][col] = 1;
+                grid[row][col] = 1; // set 0 --> 1
                 unordered_set<int> st; // becoz 4 dir give wrong answer in some cases so in set we put ultimate parent of that curr node
                 for (int i = 0; i < 4; i++) {
                     int adjr = row + dir_r[i];
@@ -89,11 +89,12 @@ public:
                         st.insert(ds.findUPar(adjr * n + adjc));
                     }
                 }
-                int totalsize = 0;
+                int totalsize = 1;
                 for (auto& it : st) {
                     totalsize += ds.size[it];
                 }
-                mx = max(mx, totalsize + 1);
+                mx = max(mx, totalsize);
+                grid[row][col] = 0; // convert 1 --> 0
             }
         }
         // if in grid all node are 1's no 0's
