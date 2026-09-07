@@ -11,19 +11,18 @@
 class Solution {
 public:
     ListNode* insertionSortList(ListNode* head) {
-        vector<int>result;
-        ListNode* ptr=head;
-        while(ptr){
-            result.push_back(ptr->val);
-            ptr=ptr->next;
+        ListNode* dummy = new struct ListNode(0);
+        ListNode* curr = head;
+        while (curr != NULL) {
+            ListNode* ptr = dummy;
+            while (ptr->next != NULL && ptr->next->val <= curr->val) {
+                ptr = ptr->next;
+            }
+            ListNode* temp = curr->next;
+            curr->next = ptr->next;
+            ptr->next = curr;
+            curr = temp;
         }
-        sort(result.begin(),result.end());
-        ListNode* new_node=new struct ListNode(0);
-        ListNode* pre=new_node;
-        for(int it:result){
-            pre->next=new struct ListNode(it);
-            pre=pre->next;
-        }
-        return new_node->next;
+        return dummy->next;
     }
 };
