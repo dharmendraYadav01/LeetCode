@@ -12,28 +12,22 @@
  */
 class Solution {
 public:
-    int count = 0;
-    int getnode(TreeNode* root){
-        if(root==NULL) return 0;
-        // cout<<count<<endl;
-        return 1+getnode(root->left)+getnode(root->right);
-    }
-    int getSum(TreeNode* root) {
-        if (root == NULL)
-            return 0;
-        // count<<sum;
-        return root->val+getSum(root->left)+getSum(root->right);
+    int cnt = 0;
+    pair<int, int> Solve(TreeNode* root) {
+        if (!root)
+            return {0, 0};
+        pair<int, int> left = Solve(root->left);
+        pair<int, int> right = Solve(root->right);
+        int sum = root->val + left.first + right.first;
+        int node = 1 + left.second + right.second;
+        if ((sum / node) == root->val)
+            cnt++;
+        return {sum, node};
     }
     int averageOfSubtree(TreeNode* root) {
-        // base case
-        if (root == NULL)
+        if (!root)
             return 0;
-        int sum = getSum(root);
-        int nodes = getnode(root);
-        if ((sum / nodes) == root->val)
-            count++;
-        averageOfSubtree(root->left);
-        averageOfSubtree(root->right);
-        return count;
+        Solve(root);
+        return cnt;
     }
 };
