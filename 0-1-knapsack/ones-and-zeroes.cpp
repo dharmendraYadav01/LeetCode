@@ -1,7 +1,7 @@
 class Solution {
 public:
     int help(vector<string>& str,int m,int n,int idx,vector<vector<vector<int>>>&dp){
-        //base case
+        // base case
         if(idx==str.size()) return 0;
 
         if(dp[idx][m][n]!=-1) return dp[idx][m][n];
