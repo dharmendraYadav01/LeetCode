@@ -23,7 +23,7 @@ public:
             return NULL;
         }
 
-        int element=postorder[idx_post--];
+        int element=postorder[idx_post--]; // get curr value
         TreeNode* root=new struct TreeNode(element);
 
         // so this node N
