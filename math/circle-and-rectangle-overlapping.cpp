@@ -7,6 +7,6 @@ public:
         int dx = cx - xCenter;
         int dy = cy - yCenter;
 
-        return dx * dx + dy * dy <= radius;
+        return dx * dx + dy * dy <= radius * radius;
     }
 };
