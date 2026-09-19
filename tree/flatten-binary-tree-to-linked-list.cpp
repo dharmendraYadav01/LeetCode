@@ -14,7 +14,7 @@ public:
     void flatten(TreeNode* root) {
         if(!root) return;
         TreeNode* curr=root;
-        while(curr){
+        while(curr){ // using pointer approach
             if(curr->left){
                 TreeNode* pre=curr->left;
                 while(pre->right){
