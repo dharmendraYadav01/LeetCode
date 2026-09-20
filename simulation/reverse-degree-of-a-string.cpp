@@ -1,13 +1,15 @@
 class Solution {
 public:
     int reverseDegree(string s) {
-        map<char,int>mp;
-        for(auto i='a';i<='z';i++){
-            mp[i]='z'-i+1;
+        unordered_map<char, int> mp;
+        int i = 1;
+        for (char c = 'z'; c >= 'a'; c--) {
+            mp[c] = i;
+            i++;
         }
-        int sum=0;
-        for(int i=0;i<s.length();i++){
-            sum+=(i+1)*mp[s[i]];
+        int sum = 0;
+        for (int i = 0; i < s.length(); i++) {
+            sum += mp[s[i]] * (i + 1);
         }
         return sum;
     }
