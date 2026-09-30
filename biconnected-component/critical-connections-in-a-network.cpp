@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int time=1;
+    int time=1; // t.s
     void dfs(int node,int parent,int tin[],int low[],vector<int>&vis,vector<vector<int>>& adj,vector<vector<int>>& bridges){
         vis[node]=1;
         tin[node]=time;
